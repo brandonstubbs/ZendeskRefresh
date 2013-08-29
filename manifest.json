@@ -1,0 +1,17 @@
+{
+  "name": "ZendeskRefresh",
+  "version": "2.0",
+  "permissions": [
+    "https://*.zendesk.com/agent/*"
+  ],
+  "icons":{"128": "refresh-icon.png"},
+  "web_accessible_resources": [
+	"script.js"],
+    "content_scripts": [
+    {
+      "matches": ["https://*.zendesk.com/agent/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "manifest_version": 2
+}
