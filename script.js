@@ -1,7 +1,7 @@
 //Injected function
 function timerMethod() {
 	//Refresh function
-	$('.action_button:not(.reload_apps)').click();
+	$('.action_button:not(.reload_apps,.pin_control)').click();
 	//Log it
 	console.log("Zendesk Refresh Triggered");
 }
