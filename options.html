@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <style>
+      .container {
+        display: inline-block;
+      }
+
+      .checkbox {
+        width: 70px;
+      }
+
+      .number {
+        padding-left: 10px;
+        width: 200px;
+      }
+      .number label {
+        padding-left: 3px;
+      }
+      .number input[type="number"] {
+        width: 50px;
+      }
+
+      #status {
+        font-size: 14px;
+        font-style: italic;
+        color: green;
+      }
+
+      button {
+        margin-top: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <p></p>
+    <div class="container">
+      <h3>DashBoard (Home):</h3>
+      <div class="checkbox container">
+        <input type="checkbox" id="dashboard"/>
+        <label for="dashboard">Enabled</label>
+      </div>
+      <div class="number container">
+        <input type="number" id="dashboardInterval"/>
+        <label for="dashboardInterval">Refresh Interval <small>(in seconds)</small></label>
+      </div>
+    </div>
+    <div class="container">
+      <h3>Views:</h3>
+      <div class="checkbox container">
+        <input type="checkbox" id="views"/>
+        <label for="views">Enabled</label>
+      </div>
+      <div class="number container">
+        <input type="number" id="viewsInterval"/>
+        <label for="viewsInterval">Refresh Interval <small>(in seconds)</small></label>
+      </div>
+    </div>
+    <div class="container">
+      <h3>Customer Lists:</h3>
+      <div class="checkbox container">
+        <input type="checkbox" id="customerViews"/>
+        <label for="customerViews">Enabled</label>
+      </div>
+      <div class="number container">
+        <input type="number" id="customerViewsInterval"/>
+        <label for="customerViewsInterval">Refresh Interval <small>(in seconds)</small></label>
+      </div>
+    </div>
+
+    <div id="status"></div>
+    <button id="saveOptions">Save</button>
+
+    <script src="options.js"></script>
+  </body>
+</html>

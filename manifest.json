@@ -1,17 +1,29 @@
 {
-  "name": "ZendeskRefresh",
-  "version": "2.0",
-  "permissions": [
-    "https://*.zendesk.com/agent/*"
-  ],
-  "icons":{"128": "refresh-icon.png"},
-  "web_accessible_resources": [
-	"script.js"],
-    "content_scripts": [
+  "name": "Zendesk Auto Refresh",
+  "description": "This is a third party plugin that will enforce zendesk to refresh.",
+  "version": "3.0.0",
+  "manifest_version": 2,
+  "minimum_chrome_version": "45",
+  "content_scripts": [
     {
-      "matches": ["https://*.zendesk.com/agent/*"],
-      "js": ["content.js"]
+      "matches": ["*://*.zendesk.com/agent/*"],
+      "js": ["jquery-3.3.1.min.js", "content.js"]
     }
   ],
-  "manifest_version": 2
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "page_action" : {
+    "default_icon": {
+      "128": "refresh-icon.png"
+    }
+  },
+  "icons": {"128": "refresh-icon.png"},
+  "permissions" : ["storage", "declarativeContent", "https://*.zendesk.com/agent/*"],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "author": "Brandon Stubbs"
 }
