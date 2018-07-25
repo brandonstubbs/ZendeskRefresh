@@ -13,12 +13,12 @@ function setIntervals() {
 	
 	setInterval(() => {
 		if (viewsEnabled && $(".nav-tab-list li:eq(1) a").hasClass("active-product-link"))
-			$('#main_panes .filters :button:has(.icon-refresh)')[0].click();
+			$('#main_panes .filters button.action_button:not(.pin_control)').click()
 	}, viewsIntervalTime * 1000);
 
 	setInterval(() => {
 		if (customerListsEnabled && $(".nav-tab-list li:eq(2) a").hasClass("active-product-link"))
-			$('#main_panes .user_filters :button:has(.icon-refresh)')[0].click();
+			$('#main_panes .user_filters button.action_button:not(.pin_control)')[0].click();
 	}, customerListsIntervalTime * 1000);
 }
 
