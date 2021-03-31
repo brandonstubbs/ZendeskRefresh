@@ -5,7 +5,7 @@ chrome.runtime.onInstalled.addListener(function() {
       {
         conditions: [
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { 
+            pageUrl: {
               urlMatches: 'zendesk.com/agent'
             },
           })

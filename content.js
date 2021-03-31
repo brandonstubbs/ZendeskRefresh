@@ -2,24 +2,28 @@ let dashBoardEnabled;
 let dashBoardIntervalTime;
 let viewsEnabled;
 let viewsIntervalTime;
-let customerListsEnabled;
-let customerListsIntervalTime;
 
 function setIntervals() {
 	setInterval(() => {
-		if (dashBoardEnabled && $(".nav-tab-list li:eq(0) a").hasClass("active-product-link"))
-			$(".nav-tab-list li:eq(0) a")[0].click();
+		if (dashBoardEnabled && $("a[data-test-id='home-tab']").hasClass("active-product-link")) {
+			$("a[data-test-id='home-tab']").click();
+			console.debug("refreshed dashboard");
+		}
 	}, dashBoardIntervalTime * 1000);
-	
-	setInterval(() => {
-		if (viewsEnabled && $(".nav-tab-list li:eq(1) a").hasClass("active-product-link"))
-			$('#main_panes .filters button.action_button:not(.pin_control)').click()
-	}, viewsIntervalTime * 1000);
 
 	setInterval(() => {
-		if (customerListsEnabled && $(".nav-tab-list li:eq(2) a").hasClass("active-product-link"))
-			$('#main_panes .user_filters button.action_button:not(.pin_control)')[0].click();
-	}, customerListsIntervalTime * 1000);
+		if (viewsEnabled && $("a[data-original-title='Views']").hasClass("active-product-link")) {
+			if ($("li:contains('1')").length > 0) { // Only click if we are on the first page, could not find an easier selector.
+				if (!$("li:contains('1')").hasClass("LRfn")) {
+					$("button[data-test-id='views_views-list_header-refresh']").click();
+					console.debug("refreshed views");
+				}
+			} else {
+				$("button[data-test-id='views_views-list_header-refresh']").click();
+				console.debug("refreshed views");
+			}
+		}
+	}, viewsIntervalTime * 1000);
 }
 
 function loadOptionsAndStartIntervals() {
@@ -27,27 +31,21 @@ function loadOptionsAndStartIntervals() {
 		dashBoardEnabled: true,
 		dashBoardIntervalTime: 60,
 		viewsEnabled: true,
-		viewsIntervalTime: 60,
-		customerListsEnabled: true,
-		customerListsIntervalTime: 60
+		viewsIntervalTime: 60
 	}, items => {
 		dashBoardEnabled = items.dashBoardEnabled;
 		dashBoardIntervalTime = items.dashBoardIntervalTime;
 		viewsEnabled = items.viewsEnabled;
 		viewsIntervalTime = items.viewsIntervalTime;
-		customerListsEnabled = items.customerListsEnabled;
-		customerListsIntervalTime = items.customerListsIntervalTime;
 
 		console.log("dashBoardEnabled: " + dashBoardEnabled +
 				", dashBoardIntervalTime: " + dashBoardIntervalTime +
 				", viewsEnabled: " + viewsEnabled +
-				", viewsIntervalTime: " + viewsIntervalTime +
-				", customerListsEnabled: " + customerListsEnabled +
-				", customerListsIntervalTime: " + customerListsIntervalTime
+				", viewsIntervalTime: " + viewsIntervalTime
 		);
 		setIntervals();
 	});
-	
+
 }
 
 loadOptionsAndStartIntervals();
