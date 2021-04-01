@@ -1,7 +1,7 @@
 {
   "name": "Zendesk Auto Refresh",
   "description": "This is a third party plugin that will enforce zendesk to refresh.",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "manifest_version": 2,
   "minimum_chrome_version": "45",
   "content_scripts": [
