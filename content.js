@@ -15,15 +15,19 @@ function setIntervals() {
 		if (viewsEnabled && $("a[data-original-title='Views']").hasClass("active-product-link")) {
 			if ($("li:contains('1')").length > 0) { // Only click if we are on the first page, could not find an easier selector.
 				if ($("li:contains('1')").css("cursor") != "pointer") {
-					$("#main_panes button.action_button:not(.pin_control)").click();
-					console.debug("refreshed views");
+					refreshViews();
 				}
 			} else {
-				$("#main_panes button.action_button:not(.pin_control)").click();
-				console.debug("refreshed views");
+				refreshViews();
 			}
 		}
 	}, viewsIntervalTime * 1000);
+}
+
+function refreshViews() {
+	let refresh = $("#main_panes button[data-test-id='views_views-list_header-refresh']");
+	refresh.click();
+	console.debug("refreshed views", refresh.length == 1);
 }
 
 function loadOptionsAndStartIntervals() {
